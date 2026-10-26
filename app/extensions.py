@@ -41,7 +41,7 @@ def get_user_id() -> str:
 limiter = Limiter(
    key_func=get_remote_address,
    storage_uri=Config.FLASK_LIMITED_STORAGE_URI,
-    strategy="fixed-window-elastic-expiry",
+    strategy="moving-window",
     headers_enabled=True,
     key_prefix = "address_limiter"
 )
@@ -49,7 +49,7 @@ limiter = Limiter(
 user_limiter = Limiter(
     key_func = get_user_id,
     storage_uri=Config.FLASK_LIMITED_STORAGE_URI,
-    strategy="fixed-window-elastic-expiry",
+    strategy="moving-window",
     headers_enabled=True,
     key_prefix = "user_limiter"
 )
