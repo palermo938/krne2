@@ -49,6 +49,7 @@ def create_app(config_class=Config):
     app.config['CORS_HEADERS'] = 'Content-Type'
     app.config['SESSION_TYPE'] = 'filesystem'
     #app.config['SESSION_REDIS'] = redis.from_url(Config.FLASK_LIMITED_STORAGE_URI)
+    app.config['RATELIMIT_STORAGE'] = 'memory://'
     app.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024
     app.config["SQUEEZE_MIN_SIZE"] = 0
     #if app.debug is False:
