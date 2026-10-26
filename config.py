@@ -14,7 +14,7 @@ class Config:
 
     REDIS_CLIENT = redis.Redis(host="127.0.0.1", port=6379, db=0, decode_responses=True)
 
-    FLASK_LIMITED_STORAGE_URI : str = "redis://localhost:6379/0"
+    FLASK_LIMITED_STORAGE_URI : str = "memory://"
     BaseDomain : str = "example.com"
     BaseURL : str = f"https://www.{BaseDomain}"
 
