@@ -22,3 +22,5 @@ timeago
 python-redis-lock
 pytz
 gunicorn
+psycopg2-binary
+psycopg[binary]
