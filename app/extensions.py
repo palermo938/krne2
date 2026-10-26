@@ -39,8 +39,8 @@ def get_user_id() -> str:
     return f"user_id:{ UserTokenInfo[0] }"
 
 limiter = Limiter(
-    get_remote_address,
-    storage_uri=Config.FLASK_LIMITED_STORAGE_URI,
+   key_func=get_remote_address,
+   storage_uri=Config.FLASK_LIMITED_STORAGE_URI,
     strategy="fixed-window-elastic-expiry",
     headers_enabled=True,
     key_prefix = "address_limiter"
