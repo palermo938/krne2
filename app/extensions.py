@@ -54,7 +54,18 @@ user_limiter = Limiter(
     key_prefix = "user_limiter"
 )
 
-redis_controller = Config.REDIS_CLIENT
+class DummyRedis:
+    def get(self, args, **kwargs): return None
+    def set(self,args, kwargs): return True
+    def llen(self, *args, kwargs): return 0
+    def lindex(self, args, **kwargs): return None
+    def lrem(self,args, **kwargs): return True
+
+try:
+    redis_controller = Config.REDIS_CLIENT
+    redis_controller.ping()
+except Exception:
+    redis_controller = DummyRedis()
 
 scheduler = APScheduler()
 logging.getLogger('apscheduler').setLevel(logging.ERROR)
