@@ -21,3 +21,4 @@ pypng
 timeago
 python-redis-lock
 pytz
+gunicorn
